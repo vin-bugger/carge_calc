@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F&O Brokerage Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Brokerage Calculator</h1>
+            <p>Calculate your F&O brokerage and charges</p>
+        </header>
+
+        <main class="calculator">
+            <div class="left-column">
+                <div class="glass-panel input-panel">
+                    <h2>Add Trade</h2>
+                    <form id="calc-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="segment">Segment</label>
+                                <div class="custom-select">
+                                    <select id="segment" required>
+                                        <option value="options">Options</option>
+                                        <option value="futures">Futures</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="exchange">Exchange</label>
+                                <div class="custom-select">
+                                    <select id="exchange" required>
+                                        <option value="nse">NSE</option>
+                                        <option value="bse">BSE</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="quantity">Quantity</label>
+                            <input type="number" id="quantity" placeholder="e.g. 50" required min="1" step="1">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="buy-price">Buy Price (₹)</label>
+                                <input type="number" id="buy-price" placeholder="0.00" required min="0" step="0.05">
+                            </div>
+                            <div class="form-group">
+                                <label for="sell-price">Sell Price (₹)</label>
+                                <input type="number" id="sell-price" placeholder="0.00" required min="0" step="0.05">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-calculate">
+                            Add Trade
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="glass-panel trades-panel">
+                    <div class="trades-header">
+                        <h2>Trades (<span id="trade-count">0</span>)</h2>
+                        <button id="btn-clear" class="btn-clear">Clear All</button>
+                    </div>
+                    <div id="trades-list" class="trades-list">
+                        <p class="empty-state" id="empty-state">No trades added yet. Add a trade above.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-panel output-panel">
+                <h2>Total Summary Breakdown</h2>
+                
+                <div class="results">
+                    <div class="result-row primary-row">
+                        <span>Total Turnover</span>
+                        <span id="res-turnover" class="value">₹0.00</span>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <div class="result-row">
+                        <span>Brokerage (Flat)</span>
+                        <span id="res-brokerage">₹0.00</span>
+                    </div>
+                    <div class="result-row">
+                        <span>STT Total</span>
+                        <span id="res-stt">₹0.00</span>
+                    </div>
+                    <div class="result-row">
+                        <span>Exchange Transaction Charge</span>
+                        <span id="res-exchange">₹0.00</span>
+                    </div>
+                    <div class="result-row">
+                        <span>GST (18%)</span>
+                        <span id="res-gst">₹0.00</span>
+                    </div>
+                    <div class="result-row">
+                        <span>SEBI Charges</span>
+                        <span id="res-sebi">₹0.00</span>
+                    </div>
+                    <div class="result-row">
+                        <span>Stamp Duty</span>
+                        <span id="res-stamp">₹0.00</span>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <div class="result-row total-charges">
+                        <span>Total Charges</span>
+                        <span id="res-total-charges" class="value text-danger">₹0.00</span>
+                    </div>
+
+                    <div class="result-card pnl-card" id="pnl-card">
+                        <div class="pnl-label">Net P&L</div>
+                        <div class="pnl-value" id="res-net-pnl">₹0.00</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
