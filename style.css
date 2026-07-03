@@ -1,0 +1,356 @@
+:root {
+    --bg-color: #f5f6fb;
+    --card-bg: #ffffff;
+    --card-border: #e8e9eb;
+    --text-primary: #44475b;
+    --text-secondary: #7c7e8c;
+    --accent: #00d09c;
+    --accent-hover: #00b386;
+    --success: #00d09c;
+    --danger: #eb5b3c;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 3rem;
+}
+
+/* Layout */
+.container {
+    width: 100%;
+    max-width: 960px;
+    padding: 0 1rem 2rem 1rem;
+}
+
+header {
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.calculator {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .calculator {
+        grid-template-columns: 1fr;
+    }
+}
+
+.left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Panels */
+.glass-panel, .input-panel, .trades-panel, .output-panel {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.glass-panel h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--card-border);
+    color: var(--text-primary);
+}
+
+/* Form Styles */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+input, select {
+    background: #ffffff;
+    border: 1px solid #dcdce0;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    outline: none;
+}
+
+input:focus, select:focus {
+    border-color: var(--accent);
+}
+
+input::placeholder {
+    color: #c0c2cc;
+}
+
+.custom-select {
+    position: relative;
+}
+
+.custom-select select {
+    appearance: none;
+    width: 100%;
+    cursor: pointer;
+}
+
+.custom-select::after {
+    content: "▼";
+    font-size: 0.6rem;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: var(--text-secondary);
+}
+
+/* Button */
+.btn-calculate {
+    width: 100%;
+    background: var(--accent);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.btn-calculate:hover {
+    background: var(--accent-hover);
+}
+
+.btn-calculate svg {
+    display: none;
+}
+
+/* Results Styles */
+.results {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.result-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.result-row .value, .result-row span:last-child {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.primary-row {
+    font-size: 1.05rem;
+}
+
+.primary-row .value {
+    font-weight: 600;
+}
+
+.divider {
+    height: 1px;
+    background: var(--card-border);
+    margin: 0.25rem 0;
+}
+
+.total-charges {
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+.total-charges .value, .total-charges span:last-child {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.text-danger {
+    color: var(--danger) !important;
+}
+
+.text-success {
+    color: var(--success) !important;
+}
+
+.result-card {
+    background: var(--bg-color);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 1.25rem;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.pnl-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.pnl-value {
+    font-size: 1.75rem;
+    font-weight: 600;
+}
+
+/* Trades Panel Styles */
+.trades-panel {
+    max-height: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.trades-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--card-border);
+}
+
+.trades-header h2 {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.btn-clear {
+    background: transparent;
+    color: var(--danger);
+    border: none;
+    padding: 0;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.btn-clear:hover {
+    text-decoration: underline;
+}
+
+.trades-list {
+    overflow-y: auto;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-right: 0.5rem;
+}
+
+.trades-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.trades-list::-webkit-scrollbar-thumb {
+    background-color: var(--card-border);
+    border-radius: 4px;
+}
+
+.empty-state {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    padding: 2rem 0;
+}
+
+.trade-item {
+    background: #ffffff;
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+}
+
+.trade-item-header {
+    grid-column: span 2;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.trade-detail {
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-secondary);
+}
+
+.trade-detail .val {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.trade-remove {
+    background: none;
+    border: none;
+    color: var(--danger);
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.trade-remove:hover {
+    text-decoration: underline;
+}
+
