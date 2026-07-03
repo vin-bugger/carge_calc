@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Inputs
     const segmentEl = document.getElementById('segment');
     const exchangeEl = document.getElementById('exchange');
+    const brokerageFeeEl = document.getElementById('brokerage-fee');
     const quantityEl = document.getElementById('quantity');
     const buyPriceEl = document.getElementById('buy-price');
     const sellPriceEl = document.getElementById('sell-price');
@@ -41,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const sellTurnover = sellPrice * qty;
         const totalTurnover = buyTurnover + sellTurnover;
 
-        const brokerage = 40; 
+        const brokerage = parseFloat(brokerageFeeEl.value) || 0;
 
         let stt = 0;
         if (segment === 'futures') {

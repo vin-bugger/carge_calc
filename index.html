@@ -208,6 +208,11 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="brokerage-fee">Brokerage per Order (&#8377;)</label>
+                            <input type="number" id="brokerage-fee" placeholder="e.g. 20" value="20" min="0" step="0.01" aria-label="Flat brokerage charge per order in rupees">
+                        </div>
+
+                        <div class="form-group">
                             <label for="quantity">Quantity (Lots &times; Lot Size)</label>
                             <input type="number" id="quantity" placeholder="e.g. 50" required min="1" step="1" aria-label="Number of contracts">
                         </div>
@@ -253,7 +258,7 @@
                     <div class="divider"></div>
 
                     <div class="result-row">
-                        <span>Brokerage (Flat &#8377;20/order)</span>
+                        <span>Brokerage (Flat, per order)</span>
                         <span id="res-brokerage">&#8377;0.00</span>
                     </div>
                     <div class="result-row">
