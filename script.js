@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const sellTurnover = sellPrice * qty;
         const totalTurnover = buyTurnover + sellTurnover;
 
-        const brokerage = parseFloat(brokerageFeeEl.value) || 0;
+        const brokerage = (parseFloat(brokerageFeeEl.value) || 0) * 2; // charged for both buy & sell orders
 
         let stt = 0;
         if (segment === 'futures') {
